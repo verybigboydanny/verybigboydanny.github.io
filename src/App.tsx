@@ -224,7 +224,7 @@ export default function App() {
           </h1>
           <div className={`layer mt-4 flex max-w-xl flex-col gap-5 ${panel}`}>
             <p className="text-xl text-text/90 sm:text-2xl">{profile.line}</p>
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-mute">It’s a room. Poke things. Most of them respond.</p>
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.25em] text-mute">16 y/o</p>
           </div>
           {!sceneOk && <p className="layer mt-4 text-mute">3D is off here (WebGL unavailable). Everything else still works.</p>}
         </section>

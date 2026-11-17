@@ -9,7 +9,7 @@ import type { ItemId } from '../scene/ClayScene'
 
 export const profile = {
   name: 'Danny',
-  line: 'I build software, and I care more than I should about the parts you’re not meant to notice.',
+  line: '#1 Vibecoder',
   discord: '@bigboy.danny',
   links: [{ label: 'GitHub', href: 'https://github.com/verybigboydanny' }],
 }
@@ -30,16 +30,16 @@ export const about = {
 export const supporter = {
   label: 'My #1 supporter',
   name: 'Mishka',
-  note: 'Mishka is my girlfriend and my number one supporter. I built an entire room, so it seemed rude not to leave something of hers in it.',
-  seat: 'A small heart floats in the room. It is hers. So is the lamp by the bookshelf.',
+  note: 'I love you.',
+  seat: 'The lamp by the bookshelf is hers.',
   hint: 'There is a letter for her somewhere in this room. It is not on the desk.',
   lampOn: 'Light her lamp',
   lampOff: 'Lamp off',
-  greet: 'Hi, Mishka.',
+  greet: 'HIII PRINCESSS',
   // TODO(Danny): this is a draft with no made-up stories in it. Rewrite it in your own words.
   letter: {
     to: 'Mishka,',
-    body: ['I built this room, and I left a heart floating in it for you.', 'Thank you for being my number one supporter. Everything else in here is just furniture.'],
+    body: ['I LOVE YOU SOOSOSOSOS MUCH MY DARLINGGG BABYY YOURE MY ENTIRE WORLD I CANT LIVE WITHOUT YOU MWAHH.'],
     sign: '— Danny',
   },
 }
