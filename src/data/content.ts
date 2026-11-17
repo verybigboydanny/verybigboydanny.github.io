@@ -31,8 +31,7 @@ export const supporter = {
   label: 'My #1 supporter',
   name: 'Mishka',
   note: 'I love you.',
-  seat: 'The lamp by the bookshelf is hers.',
-  hint: 'There is a letter for her somewhere in this room. It is not on the desk.',
+  hint: 'Her letter is hidden somewhere in this room.',
   lampOn: 'Light her lamp',
   lampOff: 'Lamp off',
   greet: 'HIII PRINCESSS',
@@ -132,5 +131,4 @@ export const interests: { id: string; name: string; line: string; focus: ItemId 
 
 export const contact = {
   heading: 'Say hello.',
-  line: 'Got something worth building, or a bug that refuses to die? Message me on Discord.',
 }

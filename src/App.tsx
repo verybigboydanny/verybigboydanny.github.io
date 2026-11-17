@@ -316,7 +316,6 @@ export default function App() {
             <p className="label mb-4 flex gap-4" data-reveal><span className="text-mute">04</span>{supporter.label}</p>
             <h2 className="display mb-8 text-[clamp(4.5rem,15vw,13rem)]" data-reveal>{supporter.name}</h2>
             <p className="mb-3 max-w-md text-xl text-text/90" data-reveal>{supporter.note}</p>
-            <p className="mb-3 max-w-md font-mono text-xs uppercase tracking-[0.18em] text-mute" data-reveal>{supporter.seat}</p>
             <p className="mb-8 max-w-md text-text/85" data-reveal>{supporter.hint}</p>
             <div className="flex flex-wrap items-center gap-3" data-reveal>
               <button
@@ -335,8 +334,7 @@ export default function App() {
         <section id="contact" className="layer flex min-h-[80svh] flex-col justify-end px-[var(--pad)] pb-14 pt-[12vh]">
           <div className={`max-w-2xl ${panel}`}>
             <SectionHead n="05" title="Contact" />
-            <p className="display mb-5 text-[clamp(3.2rem,10vw,8rem)]" data-reveal>{contact.heading}</p>
-            <p className="mb-6 max-w-md text-lg text-text/85" data-reveal>{contact.line}</p>
+            <p className="display mb-8 text-[clamp(3.2rem,10vw,8rem)]" data-reveal>{contact.heading}</p>
             <button
               type="button"
               onClick={() => {
