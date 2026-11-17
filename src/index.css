@@ -1,0 +1,207 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #130d08;
+  --color-graphite: #1c140d;
+  --color-graphite-2: #271c13;
+  --color-edge: #4a3a2b;
+  --color-text: #f6eee2;
+  --color-mute: #c2b29c;
+  --color-blurple: #d98a4e;
+  --color-lavender: #f3c98d;
+  --color-flood: #ffd98a;
+
+  --font-display: 'Bricolage Grotesque', 'Helvetica Neue', system-ui, sans-serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+:root {
+  color-scheme: dark;
+  --pad: clamp(1.25rem, 5vw, 5rem);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-blurple);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-flood);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--color-flood);
+  color: #111;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* 3D canvas sits behind everything */
+.scene-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.scene-layer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+}
+
+
+.section-pad {
+  padding-inline: var(--pad);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-lavender);
+}
+
+/* interest objects */
+.poly {
+  transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* hero wordmark rise (CSS so it never depends on JS timing) */
+@keyframes rise {
+  from { transform: translateY(110%); }
+}
+.hero-word {
+  animation: rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-word { animation: none; }
+}
+
+/* everything except the hero wordmark sits above the canvas */
+.layer {
+  position: relative;
+  z-index: 2;
+}
+
+.rule {
+  height: 1px;
+  background: var(--color-edge);
+  transform-origin: left;
+}
+
+/* reveals: transitions, so content is never stuck hidden */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.js [data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+.js [data-reveal] > .rule {
+  transform: scaleX(0);
+  transition: transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s;
+}
+.js [data-reveal].in > .rule {
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-reveal] > .rule {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* the letter */
+dialog {
+  border: 0;
+  box-shadow: inset -8px -10px 22px rgba(60, 45, 25, 0.12), inset 8px 8px 18px rgba(255, 255, 255, 0.6), 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+}
+dialog::backdrop {
+  background: rgb(19 13 8 / 0.78);
+}
+
+/* night vignette: keeps the copy readable over a lit room, and keeps the room readable under the copy */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(26, 14, 7, 0.3) 0%, rgba(26, 14, 7, 0.16) 34%, rgba(26, 14, 7, 0) 66%),
+    linear-gradient(180deg, rgba(26, 14, 7, 0.3) 0%, rgba(26, 14, 7, 0.12) 22%, rgba(26, 14, 7, 0) 40%);
+}
+@media (max-width: 768px) {
+  .scrim {
+    background: rgba(26, 14, 7, 0.4);
+  }
+}
+.hero-name {
+  color: #fff;
+  text-shadow: 0 0.02em 0.12em rgba(0, 0, 0, 0.55), 0 0.06em 0.5em rgba(0, 0, 0, 0.5);
+}
+
+/* copy sits straight on the room, so give it a soft warm halo */
+.layer p, .layer li, .layer dd, .layer dt, .layer h2, .layer h3, .layer h4 {
+  text-shadow: 0 1px 12px rgba(20, 10, 4, 0.6);
+}
+
+/* the big name is calligraphy: Pinyon Script is loaded for these five letters only */
+.hero-name {
+  font-family: 'Pinyon Script', 'Snell Roundhand', 'Apple Chancery', 'Lucida Calligraphy', cursive;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
